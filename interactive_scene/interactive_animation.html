@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Interactive animation</title>
+    <script type="module" src="https://cyberbotics.com/wwi/R2022b/WebotsView.js"></script>
+    <link type="text/css" rel="stylesheet" href="interactive_animation.css" />
+  </head>
+  <body>
+    <div id="robot-component" class="robot-component">
+      <div id="robot-view" class="robot-view">
+        <div id="robot-webots-view" class="robot-webots-view">
+          <webots-view data-scene="ned.x3d"></webots-view>
+        </div>
+        <div class="menu">
+          <div class="menu-items">
+            <button class="reset-button ui-icon" title="Reset Viewpoint and sliders."></button>
+            <button class="fullscreen-button ui-icon" title="Enter full-screen."></button>
+            <button class="exit-fullscreen-button ui-icon" title="Leave full-screen."></button>
+          </div>
+        </div>
+        <button class="menu-button" title="Show/Hide the device list."><div class="arrow-right" id="arrow"></div></button>
+      </div>
+      <div id="device-component" class="device-component"></div>
+    </div>
+  </body>
+  <script type=module>
+    let webotsView = document.getElementsByTagName('webots-view')[0];
+
+    const slider = document.createElement('input');
+    slider.classList.add('motor-slider');
+    slider.setAttribute('type', 'range');
+    slider.setAttribute('step', 'any');
+    slider.setAttribute('min', -Math.PI);
+    slider.setAttribute('max', Math.PI);
+    slider.setAttribute('value', 0);
+
+    slider.addEventListener('input', () => {
+      if (!slider.hasAttribute('initialValue'))
+        slider.setAttribute('initialValue', webotsView.getNode('83').rotation.toString());
+
+
+      let value = parseFloat(slider.value);
+      webotsView.updateNode('83', 'rotation', '0 0 1 ' + value)
+
+    })
+    let field = ('._initialCallbackDone')
+
+    document.getElementById('device-component').appendChild(slider)
+
+    // let button = document.getElementById('reset');
+    // button.onclick = () => {
+    //   webotsView.updateNode('83', 'rotation', slider.getAttribute('initialValue'));
+    // }
+  </script>
+</html>
