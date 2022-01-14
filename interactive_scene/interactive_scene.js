@@ -6,6 +6,28 @@ webotsView.loadScene('ned.x3d');
 
 let showDeviceComponent = true;
 
+let category = document.createElement('div');
+category.classList.add('device-category');
+category.innerHTML = '<div class="device-title">' + 'Rotational Motor' + '</div>';
+document.getElementById('device-component').appendChild(category);
+
+let deviceDiv = document.createElement('div');
+deviceDiv.classList.add('device');
+// deviceDiv.addEventListener('mouseover', () => highlightX3DElement(robotName, deviceDiv));
+deviceDiv.innerHTML = '<div class="device-name">' + 'Base Joint' + '</div>';
+category.appendChild(deviceDiv);
+
+const motorDiv = document.createElement('div');
+motorDiv.classList.add('motor-component');
+deviceDiv.appendChild(motorDiv);
+
+const minLabel = document.createElement('div');
+minLabel.classList.add('motor-label');
+const maxLabel = document.createElement('div');
+maxLabel.classList.add('motor-label');
+minLabel.innerHTML = -3.14; // 2 decimals.
+maxLabel.innerHTML = 3.14;
+
 const slider = document.createElement('input');
 slider.classList.add('motor-slider');
 slider.setAttribute('type', 'range');
@@ -16,10 +38,11 @@ slider.setAttribute('value', 0);
 slider.setAttribute('webots-id', 83);
 slider.setAttribute('webots-type', 'rotation');
 slider.setAttribute('webots-axis', 'z');
+motorDiv.appendChild(minLabel);
+motorDiv.appendChild(slider);
+motorDiv.appendChild(maxLabel);
 
 slider.addEventListener('input', () => sliderMotorCallback(slider, true));
-
-document.getElementById('device-component').appendChild(slider);
 
 if (document.getElementsByClassName('menu-button').length !== 0)
   document.getElementsByClassName('menu-button')[0].onclick = () => toggleDeviceComponent();

@@ -1,3 +1,37 @@
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local("fonts/Roboto-Regular"), url("https://cyberbotics.com/wwi/R2022b/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 400;
+  src: local("fonts/Roboto-Italic"), url("https://cyberbotics.com/wwi/R2022b/fonts/Roboto-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: local("fonts/Roboto-Bold"), url("https://cyberbotics.com/wwi/R2022b/fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 700;
+  src: local("fonts/Roboto-BoldItalic"), url("https://cyberbotics.com/wwi/R2022b/fonts/Roboto-BoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  src: local("fonts/Roboto-Mono"), url("https://cyberbotics.com/wwi/R2022b/fonts/Roboto-Mono.ttf") format("truetype");
+}
+
 html, body, .robot-component {
   padding:0;
   margin:0;
@@ -123,6 +157,7 @@ html, body, .robot-component {
   padding-bottom: 10px;
   font-family: roboto;
   font-size: 14px;
+  font-weight: bold;
   text-align: center;
   border-bottom-style: solid;
   border-bottom-color: white;
