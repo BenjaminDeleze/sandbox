@@ -13,14 +13,11 @@ slider.setAttribute('step', 'any');
 slider.setAttribute('min', -Math.PI);
 slider.setAttribute('max', Math.PI);
 slider.setAttribute('value', 0);
+slider.setAttribute('webots-id', 83);
+slider.setAttribute('webots-type', 'rotation');
+slider.setAttribute('webots-axis', 'z');
 
-slider.addEventListener('input', () => {
-  if (!slider.hasAttribute('initialValue'))
-    slider.setAttribute('initialValue', webotsView.getNode('83').rotation.toString());
-
-  let value = parseFloat(slider.value);
-  webotsView.updateNode('83', 'rotation', '0 0 1 ' + value);
-});
+slider.addEventListener('input', () => sliderMotorCallback(slider, true));
 
 document.getElementById('device-component').appendChild(slider);
 
@@ -32,37 +29,38 @@ if (document.getElementsByClassName('exit-fullscreen-button').length !== 0) {
   document.getElementsByClassName('exit-fullscreen-button')[0].onclick = () => toggleRobotComponentFullScreen();
   document.getElementsByClassName('exit-fullscreen-button')[0].style.display = 'none';
 }
-// if (document.getElementsByClassName('reset-button').length !== 0)
-//   document.getElementsByClassName('reset-button')[0].onclick = () => resetRobotComponent(robotName);
-//
-// if (document.getElementsByClassName('robot-component').length !== 0) {
-//   document.getElementsByClassName('robot-component')[0].onmouseenter = () => showButtons();
-//   document.getElementsByClassName('robot-component')[0].onmouseleave = () => hideButtons(robotName);
-// }
+if (document.getElementsByClassName('reset-button').length !== 0)
+  document.getElementsByClassName('reset-button')[0].onclick = () => resetRobotComponent();
 
-// function showButtons() {
-//   if (document.getElementsByClassName('reset-button').length !== 0)
-//     document.getElementsByClassName('reset-button')[0].style.display = '';
-//
-//   if (document.getElementsByClassName('fullscreen-button').length !== 0)
-//     document.getElementsByClassName('fullscreen-button')[0].style.display = '';
-//
-//   if (document.getElementsByClassName('menu-button').length !== 0)
-//     document.getElementsByClassName('menu-button')[0].style.display = '';
-// }
-//
-// function hideButtons(robot) {
-//   if (document.getElementsByClassName('reset-button').length !== 0)
-//     document.getElementsByClassName('reset-button')[0].style.display = 'none';
-//
-//   if (document.getElementsByClassName('fullscreen-button').length !== 0)
-//     document.getElementsByClassName('fullscreen-button')[0].style.display = 'none';
-//
-//   if (document.getElementsByClassName('exit-fullscreen-button').length !== 0)
-//     document.getElementsByClassName('exit-fullscreen-button')[0].style.display = 'none';
-//
-//   if (document.getElementsByClassName('menu-button').length !== 0)
-//     document.getElementsByClassName('menu-button')[0].style.display = 'none'
+if (document.getElementsByClassName('robot-component').length !== 0) {
+  document.getElementsByClassName('robot-component')[0].onmouseenter = () => showButtons();
+  document.getElementsByClassName('robot-component')[0].onmouseleave = () => hideButtons();
+}
+
+function showButtons() {
+  if (document.getElementsByClassName('reset-button').length !== 0)
+    document.getElementsByClassName('reset-button')[0].style.display = '';
+
+  if (document.getElementsByClassName('fullscreen-button').length !== 0)
+    document.getElementsByClassName('fullscreen-button')[0].style.display = '';
+
+  if (document.getElementsByClassName('menu-button').length !== 0)
+    document.getElementsByClassName('menu-button')[0].style.display = '';
+}
+
+function hideButtons() {
+  if (document.getElementsByClassName('reset-button').length !== 0)
+    document.getElementsByClassName('reset-button')[0].style.display = 'none';
+
+  if (document.getElementsByClassName('fullscreen-button').length !== 0)
+    document.getElementsByClassName('fullscreen-button')[0].style.display = 'none';
+
+  if (document.getElementsByClassName('exit-fullscreen-button').length !== 0)
+    document.getElementsByClassName('exit-fullscreen-button')[0].style.display = 'none';
+
+  if (document.getElementsByClassName('menu-button').length !== 0)
+    document.getElementsByClassName('menu-button')[0].style.display = 'none';
+}
 
 function toggleDeviceComponent() {
   showDeviceComponent = !showDeviceComponent;
@@ -109,6 +107,44 @@ function toggleRobotComponentFullScreen(robot) {
         updateRobotComponentDimension();
       });
     }
+  }
+}
+
+function resetRobotComponent(robot) {
+  // unhighlightX3DElement(robot);
+
+  // Reset the motor sliders.
+  let sliders = document.getElementsByClassName('motor-slider');
+  for (let s = 0; s < sliders.length; s++) {
+    let slider = sliders[s];
+    // if the attribute is not present, it means that the slider was not moved
+    if (slider.hasAttribute('initialValue')) {
+      slider.value = slider.getAttribute('initialValue');
+      sliderMotorCallback(slider);
+    }
+  }
+
+  webotsView.resetViewpoint();
+  //  No need to force a render as it is already done in webotsView.resetViewpoint
+}
+
+function sliderMotorCallback(slider, render) {
+  //  The first time the slider is moved, save the initial value for reset.
+  if (!slider.hasAttribute('initialValue')) {
+    let type = slider.getAttribute('webots-type');
+    if (type === 'rotation')
+      slider.setAttribute('initialValue', webotsView.getNode(slider.getAttribute('webots-id')).rotation.toString());
+  }
+
+  let value = parseFloat(slider.value);
+  switch (slider.getAttribute('webots-type')) {
+    case 'rotation':
+      switch (slider.getAttribute('webots-axis')) {
+        case 'z':
+          webotsView.updateNode(slider.getAttribute('webots-id'), 'rotation', '0 0 1 ' + value, render);
+          break;
+      }
+      break;
   }
 }
 // let button = document.getElementById('reset');
