@@ -93,10 +93,15 @@ html, body, .robot-component {
   height: 34px;
 }
 
+.info-button {
+  width: 28px;
+}
 .fullscreen-button { background-position: -420px -2px }
 .exit-fullscreen-button { background-position: -458px -2px }
 .reset-button{ background-position: -496px -2px}
+.info-button{background-position: -306px -2px}
 
+.info-button:hover,
 .reset-button:hover,
 .fullscreen-button:hover,
 .exit-fullscreen-button:hover {
@@ -265,4 +270,34 @@ html, body, .robot-component {
 }
 .robot-component .motor-slider:focus::-ms-fill-upper {
   background: #ddd;
+}
+
+.information-panel {
+  position: absolute;
+  top: calc(50% - 140px);
+  left: calc(50% - 220px);
+  background-color: #333;
+  color: white;
+  text-align: center;
+  width: 440px;
+  height: 280px;
+  border-radius: 10px;
+  opacity: 0.95;
+  font-family: Helvetica;
+  display: none;
+}
+
+.information-panel a {
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.information-panel a:hover {
+  text-decoration: underline;
+}
+
+.cloud {
+  font-size: 12px;
 }

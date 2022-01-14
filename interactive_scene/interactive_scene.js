@@ -1,10 +1,14 @@
 import WebotsView from 'https://cyberbotics.com/wwi/R2022b/WebotsView.js';
+import informationPanel from 'https://cyberbotics.com/wwi/R2022b/informationPanel.js';
 
 let webotsView = new WebotsView();
+document.getElementById('robot-view').innerHTML += informationPanel;
 document.getElementById('robot-webots-view').appendChild(webotsView);
 webotsView.loadScene('ned.x3d');
 
 let showDeviceComponent = true;
+
+let infoPanel = document.getElementsByClassName('information-panel')[0];
 
 let category = document.createElement('div');
 category.classList.add('device-category');
@@ -44,6 +48,8 @@ motorDiv.appendChild(maxLabel);
 
 slider.addEventListener('input', () => sliderMotorCallback(slider, true));
 
+if (document.getElementsByClassName('info-button').length !== 0)
+  document.getElementsByClassName('info-button')[0].onclick = () => displayInformationWindow();
 if (document.getElementsByClassName('menu-button').length !== 0)
   document.getElementsByClassName('menu-button')[0].onclick = () => toggleDeviceComponent();
 if (document.getElementsByClassName('fullscreen-button').length !== 0)
@@ -61,6 +67,9 @@ if (document.getElementsByClassName('robot-component').length !== 0) {
 }
 
 function showButtons() {
+  if (document.getElementsByClassName('info-button').length !== 0)
+    document.getElementsByClassName('info-button')[0].style.display = '';
+
   if (document.getElementsByClassName('reset-button').length !== 0)
     document.getElementsByClassName('reset-button')[0].style.display = '';
 
@@ -72,6 +81,9 @@ function showButtons() {
 }
 
 function hideButtons() {
+  if (document.getElementsByClassName('info-button').length !== 0)
+    document.getElementsByClassName('info-button')[0].style.display = 'none';
+
   if (document.getElementsByClassName('reset-button').length !== 0)
     document.getElementsByClassName('reset-button')[0].style.display = 'none';
 
@@ -170,6 +182,21 @@ function sliderMotorCallback(slider, render) {
       break;
   }
 }
+
+function displayInformationWindow() {
+  if (infoPanel) {
+    if (infoPanel.style.display === 'block')
+      infoPanel.style.display = 'none';
+    else
+      infoPanel.style.display = 'block';
+  }
+}
+
+window.addEventListener('click', function(e) {
+  if (infoPanel && !infoPanel.contains(e.target) && !document.getElementsByClassName('info-button')[0].contains(e.target))
+    infoPanel.style.display = 'none';
+});
+
 // let button = document.getElementById('reset');
 // button.onclick = () => {
 //   webotsView.updateNode('83', 'rotation', slider.getAttribute('initialValue'));
