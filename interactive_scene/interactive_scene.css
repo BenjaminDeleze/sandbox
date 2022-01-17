@@ -76,6 +76,7 @@ html, body, .robot-component {
 .robot-component .menu {
   transform: translateY(-100%);
   width: 99%;
+  position: absolute;
 }
 .robot-component .menu-items {
   margin: 0 auto;
