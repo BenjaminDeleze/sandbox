@@ -99,7 +99,7 @@ html, body, .robot-component {
 }
 .fullscreen-button { background-position: -420px -2px }
 .exit-fullscreen-button { background-position: -458px -2px }
-.reset-button{ background-position: -496px -2px}
+.reset-button{ background-position: -192px -2px}
 .info-button{background-position: -306px -2px}
 
 .info-button:hover,
