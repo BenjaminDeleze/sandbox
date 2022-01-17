@@ -1,5 +1,6 @@
 import WebotsView from 'https://cyberbotics.com/wwi/R2022b/WebotsView.js';
 import informationPanel from 'https://cyberbotics.com/wwi/R2022b/informationPanel.js';
+import {quaternionToVec4, vec4ToQuaternion} from 'https://cyberbotics.com/wwi/R2022b/nodes/utils/utils.js';
 
 let webotsView = new WebotsView();
 document.getElementById('robot-view').innerHTML += informationPanel;
@@ -21,18 +22,18 @@ deviceDiv.classList.add('device');
 deviceDiv.innerHTML = '<div class="device-name">' + 'Base Joint' + '</div>';
 category.appendChild(deviceDiv);
 
-const motorDiv = document.createElement('div');
+let motorDiv = document.createElement('div');
 motorDiv.classList.add('motor-component');
 deviceDiv.appendChild(motorDiv);
 
-const minLabel = document.createElement('div');
+let minLabel = document.createElement('div');
 minLabel.classList.add('motor-label');
-const maxLabel = document.createElement('div');
+let maxLabel = document.createElement('div');
 maxLabel.classList.add('motor-label');
 minLabel.innerHTML = -3.14; // 2 decimals.
 maxLabel.innerHTML = 3.14;
 
-const slider = document.createElement('input');
+let slider = document.createElement('input');
 slider.classList.add('motor-slider');
 slider.setAttribute('type', 'range');
 slider.setAttribute('step', 'any');
@@ -41,12 +42,43 @@ slider.setAttribute('max', Math.PI);
 slider.setAttribute('value', 0);
 slider.setAttribute('webots-id', 83);
 slider.setAttribute('webots-type', 'rotation');
-slider.setAttribute('webots-axis', 'z');
+slider.setAttribute('webots-axis', '0 0 1');
 motorDiv.appendChild(minLabel);
 motorDiv.appendChild(slider);
 motorDiv.appendChild(maxLabel);
 
 slider.addEventListener('input', () => sliderMotorCallback(slider, true));
+
+deviceDiv = document.createElement('div');
+deviceDiv.classList.add('device');
+deviceDiv.innerHTML = '<div class="device-name">' + 'Other Joint' + '</div>';
+category.appendChild(deviceDiv);
+
+motorDiv = document.createElement('div');
+motorDiv.classList.add('motor-component');
+deviceDiv.appendChild(motorDiv);
+
+minLabel = document.createElement('div');
+minLabel.classList.add('motor-label');
+maxLabel = document.createElement('div');
+maxLabel.classList.add('motor-label');
+minLabel.innerHTML = -0.8; // 2 decimals.
+maxLabel.innerHTML = 0.8;
+
+let slider2 = document.createElement('input');
+slider2.classList.add('motor-slider');
+slider2.setAttribute('type', 'range');
+slider2.setAttribute('step', 'any');
+slider2.setAttribute('min', -0.8);
+slider2.setAttribute('max', 0.8);
+slider2.setAttribute('value', 0);
+slider2.setAttribute('webots-id', 101);
+slider2.setAttribute('webots-type', 'rotation');
+slider2.setAttribute('webots-axis', '-1 0 0.000796');
+motorDiv.appendChild(minLabel);
+motorDiv.appendChild(slider2);
+motorDiv.appendChild(maxLabel);
+slider2.addEventListener('input', () => sliderMotorCallback(slider2, true));
 
 if (document.getElementsByClassName('info-button').length !== 0)
   document.getElementsByClassName('info-button')[0].onclick = () => displayInformationWindow();
@@ -174,11 +206,17 @@ function sliderMotorCallback(slider, render) {
   let value = parseFloat(slider.value);
   switch (slider.getAttribute('webots-type')) {
     case 'rotation':
-      switch (slider.getAttribute('webots-axis')) {
-        case 'z':
-          webotsView.updateNode(slider.getAttribute('webots-id'), 'rotation', '0 0 1 ' + value, render);
-          break;
-      }
+      let init = slider.getAttribute('initialValue');
+      if (!init)
+        init = '0 0 1 0';
+      init = init.split(/\s/);
+      init = {'x': parseFloat(init[0]), 'y': parseFloat(init[1]), 'z': parseFloat(init[2]), 'w': parseFloat(init[3])};
+
+      let axis = slider.getAttribute('webots-axis').split(/[\s,]+/);
+      axis = glm.vec3(parseFloat(axis[0]), parseFloat(axis[1]), parseFloat(axis[2]));
+      let q = glm.angleAxis(value, axis);
+      q = q.mul(vec4ToQuaternion(init));
+      webotsView.updateNode(slider.getAttribute('webots-id'), 'rotation', quaternionToVec4(q).toString(), render);
       break;
   }
 }
