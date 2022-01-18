@@ -1,11 +1,9 @@
-import WebotsView from 'https://cyberbotics.com/wwi/R2022b/WebotsView.js';
 import informationPanel from 'https://cyberbotics.com/wwi/R2022b/informationPanel.js';
 import {quaternionToVec4, vec4ToQuaternion} from 'https://cyberbotics.com/wwi/R2022b/nodes/utils/utils.js';
+import WbVector3 from 'https://cyberbotics.com/wwi/R2022b/nodes/utils/WbVector3.js';
 
-let webotsView = new WebotsView();
-document.getElementById('robot-view').innerHTML += informationPanel;
-document.getElementById('robot-webots-view').appendChild(webotsView);
-webotsView.loadScene('ned.x3d');
+let webotsView = document.getElementsByTagName('webots-view')[0];
+document.getElementById('informationPlaceholder').innerHTML += informationPanel;
 
 let showDeviceComponent = true;
 
@@ -79,6 +77,42 @@ motorDiv.appendChild(minLabel);
 motorDiv.appendChild(slider2);
 motorDiv.appendChild(maxLabel);
 slider2.addEventListener('input', () => sliderMotorCallback(slider2, true));
+
+category = document.createElement('div');
+category.classList.add('device-category');
+category.innerHTML = '<div class="device-title">' + 'Linear Motor' + '</div>';
+document.getElementById('device-component').appendChild(category);
+
+deviceDiv = document.createElement('div');
+deviceDiv.classList.add('device');
+deviceDiv.innerHTML = '<div class="device-name">' + 'Other Joint' + '</div>';
+category.appendChild(deviceDiv);
+
+motorDiv = document.createElement('div');
+motorDiv.classList.add('motor-component');
+deviceDiv.appendChild(motorDiv);
+
+minLabel = document.createElement('div');
+minLabel.classList.add('motor-label');
+maxLabel = document.createElement('div');
+maxLabel.classList.add('motor-label');
+minLabel.innerHTML = -0.01; // 2 decimals.
+maxLabel.innerHTML = 0.01;
+
+let slider3 = document.createElement('input');
+slider3.classList.add('motor-slider');
+slider3.setAttribute('type', 'range');
+slider3.setAttribute('step', 'any');
+slider3.setAttribute('min', -0.01);
+slider3.setAttribute('max', 0.01);
+slider3.setAttribute('value', 0);
+slider3.setAttribute('webots-id', 223);
+slider3.setAttribute('webots-type', 'translation');
+slider3.setAttribute('webots-axis', '0 -4e-06 1');
+motorDiv.appendChild(minLabel);
+motorDiv.appendChild(slider3);
+motorDiv.appendChild(maxLabel);
+slider3.addEventListener('input', () => sliderMotorCallback(slider3, true));
 
 if (document.getElementsByClassName('info-button').length !== 0)
   document.getElementsByClassName('info-button')[0].onclick = () => displayInformationWindow();
@@ -201,9 +235,13 @@ function sliderMotorCallback(slider, render) {
     let type = slider.getAttribute('webots-type');
     if (type === 'rotation')
       slider.setAttribute('initialValue', webotsView.getNode(slider.getAttribute('webots-id')).rotation.toString());
+    else if (type === 'translation')
+      slider.setAttribute('initialValue', webotsView.getNode(slider.getAttribute('webots-id')).translation.toString());
   }
 
   let value = parseFloat(slider.value);
+  let axis = slider.getAttribute('webots-axis').split(/[\s,]+/);
+  axis = glm.vec3(parseFloat(axis[0]), parseFloat(axis[1]), parseFloat(axis[2]));
   switch (slider.getAttribute('webots-type')) {
     case 'rotation':
       let init = slider.getAttribute('initialValue');
@@ -211,12 +249,18 @@ function sliderMotorCallback(slider, render) {
         init = '0 0 1 0';
       init = init.split(/\s/);
       init = {'x': parseFloat(init[0]), 'y': parseFloat(init[1]), 'z': parseFloat(init[2]), 'w': parseFloat(init[3])};
-
-      let axis = slider.getAttribute('webots-axis').split(/[\s,]+/);
-      axis = glm.vec3(parseFloat(axis[0]), parseFloat(axis[1]), parseFloat(axis[2]));
       let q = glm.angleAxis(value, axis);
       q = q.mul(vec4ToQuaternion(init));
       webotsView.updateNode(slider.getAttribute('webots-id'), 'rotation', quaternionToVec4(q).toString(), render);
+      break;
+    case 'translation':
+      let initialValue = slider.getAttribute('initialValue');
+      if (!initialValue)
+        initialValue = '0 0 0';
+      initialValue = initialValue.split(/\s/);
+      initialValue = new WbVector3(parseFloat(initialValue[0]), parseFloat(initialValue[1]), parseFloat(initialValue[2]));
+      let translation = initialValue.add(axis.mul(value));
+      webotsView.updateNode(slider.getAttribute('webots-id'), 'translation', translation.toString(), render);
       break;
   }
 }
