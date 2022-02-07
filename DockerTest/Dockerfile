@@ -1,5 +1,4 @@
 FROM benjamindeleze/webots-test:webotsTest1
-ENV PATH "$DOCKER_PATH"
-RUN echo test $PATH output
-RUN mkdir -p $PATH
-COPY . $PATH
+RUN echo test $DOCKER_PATH output
+RUN mkdir -p $DOCKER_PATH
+COPY . $DOCKER_PATH
