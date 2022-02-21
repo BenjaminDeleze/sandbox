@@ -1,4 +1,4 @@
-#VRML_SIM R2022a utf8
+#VRML_SIM R2022b utf8
 WorldInfo {
   info [
     "An Aldebaran's Nao H25 V5.0 robot in a living room"
@@ -27,8 +27,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.20858880958519913 0.050030075497943104 0.9767229392522219 2.6813713586779135
-  position 2.9830114842862976 -1.7075397913160208 2.831030083736067
+  orientation 0.2730461935111428 -0.13523080558140205 -0.9524486366365802 3.9780077766427584
+  position 2.056295388834855 -2.185883027689072 3.4460477260136146
 }
 Background {
   backUrl [
@@ -56,6 +56,121 @@ CeilingLight {
   pointLightCastShadows TRUE
 }
 NaoRoom {
+}
+Solid {
+  translation -0.38 1.78 0.28
+  rotation 0 0 1 0.261799
+  scale 0.5 0.5 0.5
+  children [
+    DEF GEOM Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/develop/projects/objects/toys/protos/PaperBoat/textures/newspaper.jpg"
+          ]
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "webots://projects/objects/toys/protos/PaperBoat/meshes/geom.obj"
+        ]
+      }
+    }
+  ]
+  name "solid(96)"
+  model "paper boat"
+  immersionProperties [
+    ImmersionProperties {
+      fluidName "water"
+      dragForceCoefficients 0.05 0 0
+      viscousResistanceForceCoefficient 200
+    }
+  ]
+  boundingObject Group {
+    children [
+      Transform {
+        translation 0 0 0.01
+        children [
+          Box {
+            size 0.3 0.02 0.02
+          }
+        ]
+      }
+      Transform {
+        translation 0 0 0.034
+        rotation 0 1 0 1.5707997
+        children [
+          Capsule {
+            height 0.342
+            radius 0.014
+            subdivision 16
+          }
+        ]
+      }
+      Transform {
+        translation 0 -0.0308 0.038
+        rotation -0.6598636808886814 0.6598616808896486 -0.35939182619743615 -2.45157
+        children [
+          Box {
+            size 0.06 0.24 0.008
+          }
+        ]
+      }
+      Transform {
+        translation 0 0.032 0.038
+        rotation 0.45445109957547297 -0.4544500995752539 0.7661261678670722 1.83411
+        children [
+          Box {
+            size 0.06 0.24 0.008
+          }
+        ]
+      }
+      Transform {
+        translation 0 0 0.086
+        rotation 0 1 0 0.78540031
+        children [
+          Box {
+            size 0.08 0.012 0.08
+          }
+        ]
+      }
+      Transform {
+        translation -0.184 0 0.052
+        rotation 0 1 0 5.754342
+        children [
+          Capsule {
+            height 0.032
+            radius 0.01
+            subdivision 16
+          }
+        ]
+      }
+      Transform {
+        translation 0.184 0 0.052
+        rotation 0 1 0 -5.75434
+        children [
+          Capsule {
+            height 0.032
+            radius 0.01
+            subdivision 16
+          }
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 0.25
+    centerOfMass [
+      0 0 -0.0256
+    ]
+    damping Damping {
+      linear 0.95
+      angular 0.95
+    }
+  }
 }
 Cabinet {
   translation -0.2 1.99 0
@@ -98,14 +213,6 @@ DEF PAINTING_VERTICAL VisualArmature {
     "https://raw.githubusercontent.com/cyberbotics/webots/R2022a/projects/robots/softbank/nao/worlds/textures/nao_poster_2.jpg"
   ]
 }
-Key {
-  translation -0.375001 1.56 0.3
-  rotation 0 1 0 1.5708
-  contactMaterial "key"
-}
-KeyPot {
-  translation 0.12 0.2 0.3
-}
 Book {
   translation -0.19 -0.16992 0.31
   rotation 0.6215291877683468 0.4768691440655283 0.6215281877680446 -2.2516453071795866
@@ -123,6 +230,10 @@ Table {
   rotation 0 0 1 1.5708
   size 0.6 0.8 0.3
 }
+Cart {
+  translation -0.04566 -0.5706 -8.88178e-16
+  rotation 0 0 1 3.14159
+}
 Chair {
   translation -1.69 0 0
   color 0.25098 0.756863 0.368627
@@ -137,12 +248,12 @@ WoodenChair {
 }
 Nao {
   translation -1.74563 0.997971 0.34
+  controller "nao_blockly"
   cameraWidth 320
   cameraHeight 240
 }
 Robot {
-  translation 0.1 0 0.1
   name "supervisor"
-  controller "supervisor_blockly"
   supervisor TRUE
+  window "blockly"
 }

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  <link rel="icon" type="image/png" href="https://cyberbotics.com/assets/images/webots.png">
+  <script src="https://unpkg.com/blockly"></script>
+  <script src="acorn_interpreter.js"></script>
+
+</head>
+
+<body>
+  <div id="content">
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <div id=webotsPlaceholder></div>
+      <div id="blocklyDiv" style="height: 480px; width: 400px;"></div>
+      <button id=button>Generate Code</button>
+      <button id=step>Step</button>
+
+      <script type="module">
+        Blockly.defineBlocksWithJsonArray([
+          {
+            "type": "nao_action",
+            "message0": "Nao %1",
+            "args0": [
+              {
+                "type": "field_dropdown",
+                "name": "VALUE",
+                "options": [
+                  ["Forward", "forward"],
+                  ["Backward", "backward"],
+                ]
+              }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": 355
+          }
+        ]);
+
+        Blockly.inject('blocklyDiv', {
+          toolbox: document.getElementById('toolbox'),
+          scrollbars: false
+          });
+
+        Blockly.JavaScript['nao_action'] = function(block) {
+          let value = '\'' + block.getFieldValue('VALUE') + '\'';
+          return "log('test ' +" + value + ");sendMessage('Ceci est un message de test');"
+        };
+
+        let button = document.getElementById('button');
+        //Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+        //Blockly.JavaScript.addReservedWords('highlightBlock');
+        let myInterpreter
+        Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
+        Blockly.JavaScript.addReservedWords('highlightBlock');
+        button.onclick = () => {
+          let code = Blockly.JavaScript.workspaceToCode(Blockly.getMainWorkspace());
+
+          var initFunc = function(interpreter, globalObject) {
+                var wrapper = function log(text) {
+                  console.log(text);
+                  return 1;
+                };
+                interpreter.setProperty(globalObject, 'log', interpreter.createNativeFunction(wrapper));
+
+                wrapper = function(id) { return Blockly.getMainWorkspace().highlightBlock(id);};
+                interpreter.setProperty(globalObject, 'highlightBlock',interpreter.createNativeFunction(wrapper));
+
+                wrapper = function(message) {return window.robotWindow.send(message);}
+                interpreter.setProperty(globalObject, 'sendMessage',interpreter.createNativeFunction(wrapper));
+
+              };
+          myInterpreter = new Interpreter(code, initFunc);
+          // myInterpreter = new Interpreter(code);
+          // console.log(code)
+          // try {
+          //   eval(code);
+          // } catch (error) {
+          //   console.log(error)
+          // }
+        }
+
+        document.getElementById('step').onclick = () => nextStep();
+
+        function nextStep() {
+          myInterpreter.step()
+          console.log(myInterpreter.value)
+        }
+
+        function sendCommand() {
+          console.log("send")
+          let message = {
+            name: "NAO",
+            message: "upload:" + "salut"
+          };
+          webotsView.sendMessage('robot:' + JSON.stringify(message));
+        }
+
+    </script>
+
+    <xml id="toolbox" style="display: none">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="nao_action"></block>
+    </xml>
+
+  <script type="module" src="blockly.js"></script>
+</body>
+
+</html>

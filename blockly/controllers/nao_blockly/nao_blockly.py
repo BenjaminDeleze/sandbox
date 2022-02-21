@@ -22,6 +22,7 @@ while robot.step(timestep) != -1:
     message = robot.wwiReceiveText();
     if message:
         print(message)
+        robot.wwiSendText("this is a test")
     # if (message == NULL)
       # continue;
     # if (strncmp(message, "reset", 5) == 0) {
