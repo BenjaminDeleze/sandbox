@@ -6,4 +6,5 @@ maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: 1 "controllers/nao_blockly/nao_blockly.py" "plugins/robot_windows/blockly/blockly.c"
+robotWindow: supervisor
 consoles: Console:All:All

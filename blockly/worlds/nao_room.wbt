@@ -27,8 +27,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.2730461935111428 -0.13523080558140205 -0.9524486366365802 3.9780077766427584
-  position 2.056295388834855 -2.185883027689072 3.4460477260136146
+  orientation 0.32280883219792167 0.710087335372706 -0.6257558901027653 1.216919389617635
+  position -1.738696489191845 2.4241987586573446 3.4526306402564737
 }
 Background {
   backUrl [
@@ -230,10 +230,6 @@ Table {
   rotation 0 0 1 1.5708
   size 0.6 0.8 0.3
 }
-Cart {
-  translation -0.04566 -0.5706 -8.88178e-16
-  rotation 0 0 1 3.14159
-}
 Chair {
   translation -1.69 0 0
   color 0.25098 0.756863 0.368627
@@ -251,8 +247,20 @@ Nao {
   controller "nao_blockly"
   cameraWidth 320
   cameraHeight 240
+  headSlot [
+    Emitter {
+    }
+    Receiver {
+    }
+  ]
 }
 Robot {
+  children [
+    Receiver {
+    }
+    Emitter {
+    }
+  ]
   name "supervisor"
   supervisor TRUE
   window "blockly"
