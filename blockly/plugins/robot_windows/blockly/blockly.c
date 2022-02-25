@@ -99,6 +99,8 @@ void wb_robot_window_step(int time_step) {
 
   // Check if the NAO reached the end of the track
   const double * position = wb_supervisor_node_get_position(naoRef);
-  if (position[0] > 1.3)
+  if (position[0] > 3.7) {
    wb_robot_wwi_send_text("success");
+   wb_supervisor_set_label(0,"Success!",0,0,0.2,0xff0000,0,"Arial");
+  }
 }
