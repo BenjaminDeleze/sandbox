@@ -1,0 +1,2 @@
+dockerCompose:theia:webots-project/controllers/move_in_maze/
+type: benchmark
