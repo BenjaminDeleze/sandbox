@@ -1,1 +1,1 @@
-FROM benjamindeleze/webots-test:R2022b1LG
+FROM benjamindeleze/webots-test:R2022b2LG
