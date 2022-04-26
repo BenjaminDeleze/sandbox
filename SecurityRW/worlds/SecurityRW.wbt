@@ -14,7 +14,7 @@ Shape {
   appearance PBRAppearance {
     baseColorMap ImageTexture {
       url [
-        "webots://projects/appearances/protos/textures/copper/copper_base_color.jpg"
+        "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/appearances/protos/textures/copper/copper_base_color.jpg"
       ]
     }
   }
