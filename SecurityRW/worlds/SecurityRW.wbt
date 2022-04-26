@@ -1,0 +1,27 @@
+#VRML_SIM R2022b utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.19555232146818563 -0.06984796217442274 0.9782027150588387 4.014504690097034
+  position 0.3168151311121298 0.3734830461142225 0.2184753945215337
+}
+Background {
+  skyColor [
+    0.15 0.45 1
+  ]
+}
+Shape {
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "/home/benjamin/webots/projects/appearances/protos/textures/copper/copper_base_color.jpg"
+      ]
+    }
+  }
+  geometry Box {
+    size 0.1 0.1 0.1
+  }
+}
+Robot {
+  window "interact_with_environment"
+}
