@@ -2,7 +2,6 @@
 # license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
 # license url: https://cyberbotics.com/webots_assets_license
 # Supervisor of the maze runner benchmark.
-
 PROTO MazeRunnerBenchmark [
   field SFString window "maze_runner"
 ]
