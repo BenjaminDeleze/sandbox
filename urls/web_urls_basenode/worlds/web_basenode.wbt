@@ -1,0 +1,78 @@
+#VRML_SIM R2022b utf8
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.24986399444850213 0.23182322574877753 0.9401201924656605 1.7070731443788576
+  position 1.0983001872433198 -27.430744605889952 15.331069893417599
+}
+DEF WEBOTS_BACKGROUND Background {
+    skyColor [
+      0.4 0.7 1
+    ]
+    backUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_back.jpg"
+    ]
+    bottomUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_bottom.jpg"
+    ]
+    frontUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_front.jpg"
+    ]
+    leftUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_left.jpg"
+    ]
+    rightUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_right.jpg"
+    ]
+    topUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_top.jpg"
+    ]
+    backIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_back.hdr"
+    ]
+    bottomIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_bottom.hdr"
+    ]
+    frontIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_front.hdr"
+    ]
+    leftIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_left.hdr"
+    ]
+    rightIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_right.hdr"
+    ]
+    topIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_top.hdr"
+    ]
+  }
+DEF WEBOTS_SHAPE_PROTO Transform {
+  translation 0 -1.91 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/water.jpg"
+          ]
+        }
+      }
+      geometry Mesh {
+        url [
+          "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/objects/factory/forklift/protos/meshes/forklift.obj"
+        ]
+      }
+    }
+  ]
+}
+DEF WEBOTS_CAD_PROTO Transform {
+  translation -0.05 1.18 0
+  children [
+    CadShape {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/objects/factory/forklift/protos/meshes/forklift.obj"
+      ]
+    }
+  ]
+}

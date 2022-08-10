@@ -1,0 +1,23 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyShape [
+
+]
+{
+  Shape {
+    appearance PBRAppearance {
+      baseColorMap ImageTexture {
+        url [
+          "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/water.jpg"
+        ]
+      }
+    }
+    geometry Mesh {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/objects/factory/forklift/protos/meshes/forklift.obj"
+      ]
+    }
+  }
+}

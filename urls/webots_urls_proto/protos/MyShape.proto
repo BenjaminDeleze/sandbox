@@ -1,0 +1,23 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyShape [
+
+]
+{
+  Shape {
+    appearance PBRAppearance {
+      baseColorMap ImageTexture {
+        url [
+          "webots://tests/cache/protos/textures/green_texture.jpg"
+        ]
+      }
+    }
+    geometry Mesh {
+      url [
+        "webots://projects/objects/factory/forklift/protos/meshes/forklift.obj"
+      ]
+    }
+  }
+}

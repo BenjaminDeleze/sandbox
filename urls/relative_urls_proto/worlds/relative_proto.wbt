@@ -1,0 +1,35 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "../protos/MyProto.proto"
+EXTERNPROTO "../protos/MyBackground.proto"
+EXTERNPROTO "../protos/MyShapeBackward.proto"
+EXTERNPROTO "../protos/MyShapeForward.proto"
+EXTERNPROTO "../protos/MyShapeTooFar.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.24986399444850213 0.23182322574877753 0.9401201924656605 1.7070731443788576
+  position 1.0983001872433198 -27.430744605889952 15.331069893417599
+}
+MyBackground {
+}
+DEF RELATIVE_BACKWARD MyShapeBackward {
+}
+DEF RELATIVE_FORWARD Transform {
+  translation 0 -1.91 0
+  children [
+    MyShapeForward {
+    }
+  ]
+}
+Transform {
+  translation -11.93 0 0
+  children [
+    DEF RELATIVE_OUTSIDE_PROJ MyShapeTooFar {
+    }
+  ]
+}
+DEF RELATIVE_CAD_PROTO MyProto {
+  translation 4.33 1.18 0
+}

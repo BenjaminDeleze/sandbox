@@ -1,0 +1,109 @@
+#VRML_SIM R2022b utf8
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.29217800994669046 -0.23602859618661343 -0.926780725029264 4.426889789692696
+  position 7.584427061616367 -31.362207415197012 22.178144515123776
+}
+DEF ABSOLUTE_BACKGROUND Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+  backUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_back.jpg"
+  ]
+  bottomUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_bottom.jpg"
+  ]
+  frontUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_front.jpg"
+  ]
+  leftUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_left.jpg"
+  ]
+  rightUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_right.jpg"
+  ]
+  topUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_top.jpg"
+  ]
+  backIrradianceUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_back.hdr"
+  ]
+  bottomIrradianceUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_bottom.hdr"
+  ]
+  frontIrradianceUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_front.hdr"
+  ]
+  leftIrradianceUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_left.hdr"
+  ]
+  rightIrradianceUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_right.hdr"
+  ]
+  topIrradianceUrl [
+    "/home/daniel/prefab/urls/absolute_urls_basenode/protos/backg/empty_office_top.hdr"
+  ]
+}
+DEF ABSOLUTE_MESH Shape {
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "/home/daniel/prefab/urls/absolute_urls_basenode/worlds/textures/orange_texture.jpg"
+      ]
+    }
+  }
+  geometry Mesh {
+    url [
+      "/home/daniel/prefab/urls/absolute_urls_basenode/worlds/meshes/suzanne.obj"
+    ]
+  }
+}
+DEF ABSOLUTE_BACKWARDS Transform {
+  translation -2.44 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "/home/daniel/prefab/urls/absolute_urls_basenode/protos/text2/green_texture.jpg"
+          ]
+        }
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+}
+DEF ABSOLUTE_OUTSIDE_PROJ Transform {
+  translation -10.13 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "/home/daniel/prefab/urls/unstreamable_assets/black_texture.jpg"
+          ]
+        }
+      }
+      geometry Mesh {
+        url [
+          "/home/daniel/prefab/urls/unstreamable_assets/Harvester.obj"
+        ]
+      }
+    }
+  ]
+}
+DEF ABSOLUTE_CAD Transform {
+  translation 4.36 0 0
+  children [
+    CadShape {
+      url [
+        "/home/daniel/prefab/urls/absolute_urls_basenode/protos/meshes/forklift.obj"
+      ]
+    }
+  ]
+}

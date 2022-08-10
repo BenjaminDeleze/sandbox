@@ -1,0 +1,21 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyCad [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+]
+{
+  Transform {
+    translation IS translation
+    rotation IS rotation
+    children [
+      CadShape {
+        url [
+          "webots://projects/objects/factory/forklift/protos/meshes/forklift.obj"
+        ]
+      }
+    ]
+  }
+}

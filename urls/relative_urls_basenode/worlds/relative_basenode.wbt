@@ -1,0 +1,109 @@
+#VRML_SIM R2022b utf8
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.29217800994669046 -0.23602859618661343 -0.926780725029264 4.426889789692696
+  position 7.584427061616367 -31.362207415197012 22.178144515123776
+}
+DEF RELATIVE_BACKGROUND Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+  backUrl [
+    "../protos/backg/empty_office_back.jpg"
+  ]
+  bottomUrl [
+    "../protos/backg/empty_office_bottom.jpg"
+  ]
+  frontUrl [
+    "../protos/backg/empty_office_front.jpg"
+  ]
+  leftUrl [
+    "../protos/backg/empty_office_left.jpg"
+  ]
+  rightUrl [
+    "../protos/backg/empty_office_right.jpg"
+  ]
+  topUrl [
+    "../protos/backg/empty_office_top.jpg"
+  ]
+  backIrradianceUrl [
+    "../protos/backg/empty_office_back.hdr"
+  ]
+  bottomIrradianceUrl [
+    "../protos/backg/empty_office_bottom.hdr"
+  ]
+  frontIrradianceUrl [
+    "../protos/backg/empty_office_front.hdr"
+  ]
+  leftIrradianceUrl [
+    "../protos/backg/empty_office_left.hdr"
+  ]
+  rightIrradianceUrl [
+    "../protos/backg/empty_office_right.hdr"
+  ]
+  topIrradianceUrl [
+    "../protos/backg/empty_office_top.hdr"
+  ]
+}
+DEF RELATIVE_MESH Shape {
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "./textures/orange_texture.jpg"
+      ]
+    }
+  }
+  geometry Mesh {
+    url [
+      "meshes/suzanne.obj"
+    ]
+  }
+}
+DEF RELATIVE_BACKWARDS Transform {
+  translation -2.44 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../protos/text2/green_texture.jpg"
+          ]
+        }
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+}
+DEF RELATIVE_OUTSIDE_PROJ Transform {
+  translation -10.13 0 0
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "../../unstreamable_assets/black_texture.jpg"
+          ]
+        }
+      }
+      geometry Mesh {
+        url [
+          "../../unstreamable_assets/Harvester.obj"
+        ]
+      }
+    }
+  ]
+}
+DEF RELATIVE_CAD Transform {
+  translation 4.36 0 0
+  children [
+    CadShape {
+      url [
+        "../protos/meshes/forklift.obj"
+      ]
+    }
+  ]
+}

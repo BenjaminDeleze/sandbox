@@ -1,0 +1,50 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyBackground [
+
+]
+{
+  Background {
+    skyColor [
+      0.4 0.7 1
+    ]
+    backUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_back.jpg"
+    ]
+    bottomUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_bottom.jpg"
+    ]
+    frontUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_front.jpg"
+    ]
+    leftUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_left.jpg"
+    ]
+    rightUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_right.jpg"
+    ]
+    topUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_top.jpg"
+    ]
+    backIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_back.hdr"
+    ]
+    bottomIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_bottom.hdr"
+    ]
+    frontIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_front.hdr"
+    ]
+    leftIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_left.hdr"
+    ]
+    rightIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_right.hdr"
+    ]
+    topIrradianceUrl [
+      "https://raw.githubusercontent.com/cyberbotics/webots/master/projects/default/worlds/textures/cubic/empty_office_top.hdr"
+    ]
+  }
+}

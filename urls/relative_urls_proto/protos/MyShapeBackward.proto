@@ -1,0 +1,23 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyShapeBackward [
+
+]
+{
+  Shape {
+    appearance PBRAppearance {
+      baseColorMap ImageTexture {
+        url [
+          "../worlds/textures/orange_texture.jpg"
+        ]
+      }
+    }
+    geometry Mesh {
+      url [
+        "../worlds/meshes/suzanne.obj"
+      ]
+    }
+  }
+}

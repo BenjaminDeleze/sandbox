@@ -1,0 +1,23 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyShapeTooFar [
+
+]
+{
+  Shape {
+    appearance PBRAppearance {
+      baseColorMap ImageTexture {
+        url [
+          "../../unstreamable_assets/black_texture.jpg"
+        ]
+      }
+    }
+    geometry Mesh {
+      url [
+        "../../unstreamable_assets/Harvester.obj"
+      ]
+    }
+  }
+}

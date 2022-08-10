@@ -1,0 +1,50 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyBackground [
+
+]
+{
+  Background {
+    skyColor [
+      0.4 0.7 1
+    ]
+    backUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_back.jpg"
+    ]
+    bottomUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_bottom.jpg"
+    ]
+    frontUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_front.jpg"
+    ]
+    leftUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_left.jpg"
+    ]
+    rightUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_right.jpg"
+    ]
+    topUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_top.jpg"
+    ]
+    backIrradianceUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_back.hdr"
+    ]
+    bottomIrradianceUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_bottom.hdr"
+    ]
+    frontIrradianceUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_front.hdr"
+    ]
+    leftIrradianceUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_left.hdr"
+    ]
+    rightIrradianceUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_right.hdr"
+    ]
+    topIrradianceUrl [
+      "webots://projects/default/worlds/textures/cubic/empty_office_top.hdr"
+    ]
+  }
+}

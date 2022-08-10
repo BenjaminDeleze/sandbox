@@ -1,0 +1,24 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "../protos/MyCad.proto"
+EXTERNPROTO "../protos/MyBackground.proto"
+EXTERNPROTO "../protos/MyShape.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.24986399444850213 0.23182322574877753 0.9401201924656605 1.7070731443788576
+  position 1.0983001872433198 -27.430744605889952 15.331069893417599
+}
+DEF WEBOTS_BACKGROUND_PROTO MyBackground {
+}
+DEF WEBOTS_SHAPE_PROTO Transform {
+  translation 0 -1.91 0
+  children [
+    MyShape {
+    }
+  ]
+}
+DEF WEBOTS_CAD_PROTO MyCad {
+  translation -0.05 1.18 0
+}

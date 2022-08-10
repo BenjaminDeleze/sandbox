@@ -1,0 +1,50 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyBackground [
+
+]
+{
+  Background {
+    skyColor [
+      0.4 0.7 1
+    ]
+    backUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_back.jpg"
+    ]
+    bottomUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_bottom.jpg"
+    ]
+    frontUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_front.jpg"
+    ]
+    leftUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_left.jpg"
+    ]
+    rightUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_right.jpg"
+    ]
+    topUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_top.jpg"
+    ]
+    backIrradianceUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_back.hdr"
+    ]
+    bottomIrradianceUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_bottom.hdr"
+    ]
+    frontIrradianceUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_front.hdr"
+    ]
+    leftIrradianceUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_left.hdr"
+    ]
+    rightIrradianceUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_right.hdr"
+    ]
+    topIrradianceUrl [
+      "/home/daniel/prefab/urls/absolute_urls_proto/protos/backg/empty_office_top.hdr"
+    ]
+  }
+}

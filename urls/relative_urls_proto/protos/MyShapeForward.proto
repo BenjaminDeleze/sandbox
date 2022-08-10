@@ -1,0 +1,23 @@
+#VRML_SIM R2022b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO MyShapeForward [
+
+]
+{
+  Shape {
+    appearance PBRAppearance {
+      baseColorMap ImageTexture {
+        url [
+          "./text2/green_texture.jpg"
+        ]
+      }
+    }
+    geometry Mesh {
+      url [
+        "./meshes/forklift.obj"
+      ]
+    }
+  }
+}
