@@ -12,18 +12,6 @@
         margin:0;
         height: 100%;
       }
-      iframe {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        height: 100%;
-        width: 0px;
-        background: white;
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
-      }
-
       webots-view {
         position: absolute;
         left: 0px;
@@ -37,7 +25,7 @@
 
   <body>
     <script type="module">
-      import WebotsView from "https://cyberbotics.com/wwi/R2022b/WebotsView.js";
+      import WebotsView from "https://cyberbotics.com/wwi/testingTerminal/WebotsView.js";
 
       let iframeDisplayed = false; //To avoid to reload an iframe when resetting the simulation
       let showRWComponent = true;
