@@ -1,0 +1,22 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "webots://projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "webots://projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "webots://projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "webots://projects/robots/boston_dynamics/spot/protos/Spot.proto"
+
+WorldInfo {
+  title "Simulation on testing branch"
+}
+Viewpoint {
+  orientation -0.27393071274081066 0.2309167626673688 0.9336163094850761 1.808056720992009
+  position 1.4020951881840407 -8.405044107676451 5.602094905557796
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Spot {
+}
