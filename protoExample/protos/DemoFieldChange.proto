@@ -1,6 +1,6 @@
 #VRML_SIM R2023a utf8
 
-PROTO DemoRegeneration [
+PROTO DemoFieldChange [
   field SFColor color 1 0 0
 ]
 {
