@@ -3,7 +3,7 @@ import WebotsView from 'https://cyberbotics.com/wwi/R2023a/WebotsView.js';
 let webotsView = new WebotsView();
 document.body.appendChild(webotsView);
 webotsView.onready = displayRobotWindow;
-webotsView.connect('https://cyberbotics1.epfl.ch/1998/session?url=https://github.com/benjamindeleze/sandbox/blob/main/robotics-competition/worlds/robotics_competition.wbt', undefined, undefined, undefined, 900);
+webotsView.connect('https://cyberbotics1.epfl.ch/1998/session?url=https://github.com/benjamindeleze/sandbox/blob/master/robotics-competition/worlds/robotics_competition.wbt', undefined, undefined, undefined, 900);
 webotsView.showReset = false;
 webotsView.showQuit = false;
 webotsView.showStep = false;
