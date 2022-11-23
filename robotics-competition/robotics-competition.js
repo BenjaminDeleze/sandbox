@@ -1,4 +1,4 @@
-import WebotsView from 'https://cyberbotics.com/wwi/R2023a/WebotsView.js';
+import WebotsView from '../../webots2/resources/web/wwi/WebotsView.js';
 
 let webotsView = new WebotsView();
 document.body.appendChild(webotsView);
