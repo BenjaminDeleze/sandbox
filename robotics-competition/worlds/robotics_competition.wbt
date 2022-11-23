@@ -1,35 +1,16 @@
 #VRML_SIM R2023a utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "../protos/trackedRobot.proto"
 
 WorldInfo {
   info [
     "This environment includes four different challenges for the mobile robots competition."
   ]
   title "A contest hall environment"
-  window "generic"
-  basicTimeStep 8
-  physicsDisableTime 0.1
-  defaultDamping Damping {
-    linear 0.5
-    angular 0.5
-  }
-  contactProperties [
-    ContactProperties {
-      material1 "tube insertion exercise"
-      material2 "tube insertion exercise"
-      coulombFriction [
-        0.5
-      ]
-      softCFM 1e-05
-    }
-  ]
 }
 DEF VIEWPOINT Viewpoint {
   orientation 0.3890354413268328 0.1979499059466228 -0.8997039847235087 2.282967216311621
   position 13.407112306196105 23.407730583408174 37.47198560945137
-  ambientOcclusionRadius 1
 }
 TexturedBackground {
   texture "factory"
