@@ -27,7 +27,7 @@ Transform {
       appearance PBRAppearance {
         baseColorMap ImageTexture {
           url [
-            "textures/light_asphalt.jpg"
+            "textures/light_asphalt2.jpg"
           ]
         }
         metalness 0
