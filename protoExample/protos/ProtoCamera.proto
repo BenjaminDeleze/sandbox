@@ -30,7 +30,7 @@ field     SFFloat                                        far                    
         fieldOfView IS fieldOfView
       }
       Camera {
-        translation 0 0.5 0
+        translation 0 0.2 0
         children [
           Shape {
             geometry Sphere {
