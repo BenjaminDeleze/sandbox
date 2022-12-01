@@ -29,6 +29,16 @@ field     SFFloat                                        far                    
         near IS near
         fieldOfView IS fieldOfView
       }
+      Camera {
+        translation 0 0.5 0
+        children [
+          Shape {
+            geometry Sphere {
+              radius 0.005
+            }
+          }
+        ]
+      }
     ]
   }
 }
