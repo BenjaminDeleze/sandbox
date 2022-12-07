@@ -9,10 +9,10 @@ field SFBool       write          TRUE
 ]
 {
   Robot {
+    translation IS translation
+    rotation IS rotation
     children [
       LightSensor {
-        translation IS translation
-        rotation IS rotation
         children [
           Shape {
             geometry Sphere {
@@ -22,7 +22,6 @@ field SFBool       write          TRUE
         ]
       }
       Pen {
-        translation IS translation
         write IS write
       }
     ]
