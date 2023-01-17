@@ -13,7 +13,7 @@ PROTO RobotisJersey [
 ]
 {
   Slot {
-    type "robotis jersey"
+    type "TEST UPDATE"
     endPoint Shape {
       appearance PBRAppearance {
         baseColor IS jerseyColor
