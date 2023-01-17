@@ -12,7 +12,7 @@ PROTO RobotisJersey [
   field SFColor  jerseyColor   1 1 1
 ]
 {
-  Slot {
+  Solid {
     type "robotis jersey"
     endPoint Shape {
       appearance PBRAppearance {
