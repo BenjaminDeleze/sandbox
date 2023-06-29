@@ -1,0 +1,22 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "webots://projects/robots/boston_dynamics/atlas/protos/Atlas.proto"
+
+WorldInfo {
+  title "Simulation on testing branch"
+}
+Viewpoint {
+  orientation -0.32353042039324026 0.09536675040137153 0.9413996229009526 2.6002319196894574
+  position 6.715430040695084 -4.532628413755684 6.335574821816392
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Atlas {
+}
